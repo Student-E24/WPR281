@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Day 10 - Events</title>
+  </head>
+  <body>
+    <button id="btn">Click me</button>
+    <div id="box" style="width:100px;height:100px;background:steelblue;margin:1rem"></div>
+    <form id="form">
+      <input type="text" id="nameInput" placeholder="Enter name" />
+      <button type="submit">Submit</button>
+    </form>
+    <p id="output"></p>
+
+    <script>
+      const output = document.getElementById("output");
+
+      // Click event
+      const btn = document.getElementById("btn");
+      btn.addEventListener("click", () => {
+        output.textContent = "Button clicked!";
+      });
+
+      // Hover (mouseenter / mouseleave)
+      const box = document.getElementById("box");
+      box.addEventListener("mouseenter", () => (box.style.background = "tomato"));
+      box.addEventListener("mouseleave", () => (box.style.background = "steelblue"));
+
+      // Submit event
+      const form = document.getElementById("form");
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const name = document.getElementById("nameInput").value;
+        output.textContent = `Hello, ${name}!`;
+      });
+
+      // Multiple listeners on one element
+      btn.addEventListener("click", () => console.log("Second listener fired"));
+
+      // Remove a listener
+      const tempHandler = () => console.log("Temp handler (fires once)");
+      btn.addEventListener("click", tempHandler);
+      btn.removeEventListener("click", tempHandler);
+    </script>
+  </body>
+</html>

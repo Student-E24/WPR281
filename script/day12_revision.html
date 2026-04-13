@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Day 12 - Revision</title>
+  </head>
+  <body>
+    <h2>Student Grade Calculator</h2>
+    <input type="text" id="nameIn" placeholder="Name" />
+    <input type="number" id="markIn" placeholder="Mark (0-100)" />
+    <button id="addBtn">Add Student</button>
+    <table id="table" border="1" style="margin-top:1rem;width:100%">
+      <thead><tr><th>#</th><th>Name</th><th>Mark</th><th>Result</th></tr></thead>
+      <tbody id="tbody"></tbody>
+    </table>
+    <p id="stats"></p>
+
+    <script>
+      const students = [];
+
+      function getResult(mark) {
+        if (mark >= 75) return "Distinction";
+        if (mark >= 50) return "Pass";
+        return "Fail";
+      }
+
+      function renderTable() {
+        const tbody = document.getElementById("tbody");
+        tbody.innerHTML = "";
+        students.forEach(({ name, mark }, i) => {
+          const row = tbody.insertRow();
+          [i + 1, name, mark, getResult(mark)].forEach((val) => {
+            row.insertCell().textContent = val;
+          });
+        });
+
+        const avg = students.length
+          ? (students.reduce((s, st) => s + st.mark, 0) / students.length).toFixed(2)
+          : 0;
+        document.getElementById("stats").textContent =
+          `Total: ${students.length} | Average: ${avg}`;
+      }
+
+      document.getElementById("addBtn").addEventListener("click", () => {
+        const name = document.getElementById("nameIn").value.trim();
+        const mark = Number(document.getElementById("markIn").value);
+        if (!name || isNaN(mark) || mark < 0 || mark > 100) {
+          alert("Enter a valid name and mark (0-100).");
+          return;
+        }
+        students.push({ name, mark });
+        renderTable();
+        document.getElementById("nameIn").value = "";
+        document.getElementById("markIn").value = "";
+      });
+    </script>
+  </body>
+</html>

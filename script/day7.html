@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Day 7 - DOM</title>
+  </head>
+  <body>
+    <h1 id="title">DOM Practice</h1>
+    <p class="info">Paragraph one</p>
+    <p class="info">Paragraph two</p>
+    <ul id="list">
+      <li>Item A</li>
+      <li>Item B</li>
+    </ul>
+
+    <script>
+      // getElementById
+      const title = document.getElementById("title");
+      console.log(title.textContent);
+
+      // getElementsByClassName
+      const infos = document.getElementsByClassName("info");
+      console.log("Info count:", infos.length);
+
+      // getElementsByTagName
+      const lis = document.getElementsByTagName("li");
+      console.log("List items:", lis.length);
+
+      // querySelector / querySelectorAll
+      const firstInfo = document.querySelector(".info");
+      firstInfo.style.color = "blue";
+
+      const allInfos = document.querySelectorAll(".info");
+      allInfos.forEach((p) => (p.style.fontWeight = "bold"));
+
+      // Selecting within element
+      const list = document.getElementById("list");
+      const firstLi = list.querySelector("li");
+      firstLi.style.color = "red";
+    </script>
+  </body>
+</html>

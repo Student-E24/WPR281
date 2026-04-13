@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Day 8 - Dynamic Elements</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script>
+      const app = document.getElementById("app");
+
+      // --- <p> element ---
+      const p = document.createElement("p");
+      p.textContent = "Dynamically created paragraph.";
+      app.appendChild(p);
+
+      // --- list elements ---
+      const items = ["JavaScript", "HTML", "CSS"];
+      const ul = document.createElement("ul");
+      items.forEach((item) => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        ul.appendChild(li);
+      });
+      app.appendChild(ul);
+
+      // --- table ---
+      const data = [
+        { name: "Ewald", mark: 82 },
+        { name: "Thabo", mark: 55 },
+      ];
+      const table = document.createElement("table");
+      table.border = "1";
+
+      // Header
+      const thead = table.createTHead();
+      const hRow = thead.insertRow();
+      ["Name", "Mark"].forEach((h) => {
+        const th = document.createElement("th");
+        th.textContent = h;
+        hRow.appendChild(th);
+      });
+
+      // Body
+      const tbody = table.createTBody();
+      data.forEach(({ name, mark }) => {
+        const row = tbody.insertRow();
+        row.insertCell().textContent = name;
+        row.insertCell().textContent = mark;
+      });
+      app.appendChild(table);
+
+      // --- innerHTML ---
+      const footer = document.createElement("div");
+      footer.innerHTML = `<hr/><small>Generated at ${new Date().toLocaleTimeString()}</small>`;
+      app.appendChild(footer);
+    </script>
+  </body>
+</html>
