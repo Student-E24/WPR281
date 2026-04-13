@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Day 6 Extras</title>
+  </head>
+  <body>
+    <script>
+      // Library (fixed typos and fields)
+      const library = [
+        {
+          author: "Bill Gates",
+          title: "The Road Ahead",
+          readingStatus: true,
+        },
+        {
+          author: "Walter Isaacson",
+          title: "Steve Jobs",
+          readingStatus: true,
+        },
+        {
+          author: "Suzanne Collins",
+          title: "Mockingjay: The Final Book of The Hunger Games",
+          readingStatus: false,
+        },
+      ];
+
+      for (const book of library) {
+        const status = book.readingStatus ? "Already read" : "Not read yet";
+        console.log(`"${book.title}" by ${book.author} - ${status}`);
+      }
+
+      // Student Object.keys / Object.entries
+      const student = {
+        name: "Johnathan",
+        surname: "Rob",
+        language: "English",
+        age: 20,
+      };
+
+      console.log("\n-- Keys --");
+      for (const key of Object.keys(student)) console.log(key);
+
+      console.log("\n-- Entries --");
+      for (const [key, val] of Object.entries(student)) {
+        console.log(`${key}: ${val}`);
+      }
+
+      // Bonus: filter unread and sort by author
+      const unread = library
+        .filter((b) => !b.readingStatus)
+        .sort((a, b) => a.author.localeCompare(b.author));
+
+      console.log("\n-- Unread Books --");
+      unread.forEach((b) => console.log(b.title));
+    </script>
+  </body>
+</html>

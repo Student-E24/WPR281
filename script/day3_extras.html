@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Day 3 Extras</title>
+  </head>
+  <body>
+    <script>
+      // Star triangle
+      let rye = 5;
+      for (let i = 1; i <= rye; i++) {
+        let lyne = "";
+        for (let j = 1; j <= i; j++) lyne += "* ";
+        console.log(lyne);
+      }
+
+      // Multiplication table
+      for (let i = 1; i < 14; i++) {
+        let row = "";
+        for (let j = 1; j < i; j++) {
+          row += `${i * j}`;
+          row += j < i - 1 ? " -- " : "";
+        }
+        if (row) console.log(`Row ${i}: ${row}`);
+      }
+
+      // Day of week (Sunday is 0 in getDay)
+      const day = new Date().getDay();
+      const days = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ];
+
+      switch (day) {
+        case 0:
+        case 6:
+          alert("Weekend");
+          break;
+        default:
+          alert(days[day]);
+      }
+
+      // Positive / negative check
+      let num = Number(prompt("Gooi 'n nommer:"));
+      if (Number.isNaN(num)) {
+        alert("Dat's nie 'n nommer nie");
+      } else if (num > 0) {
+        alert("Positief");
+      } else if (num === 0) {
+        alert("ZERO");
+      } else {
+        alert("Negatief");
+      }
+    </script>
+  </body>
+</html>

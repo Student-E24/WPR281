@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Day 5 Extras</title>
+  </head>
+  <body>
+    <script>
+      // Favourite food object
+      const myFave = {
+        title: "Lasagna",
+        servings: 2,
+        ingredients: ["Tomato", "Garlic", "Mince", "Sauce", "Love"],
+      };
+
+      console.log(myFave.title);
+      console.log("--------------------------------------------");
+      console.log(`Serves: ${myFave.servings}`);
+      console.log("Ingredients:");
+      for (const ing of myFave.ingredients) console.log(`* ${ing}`);
+
+      // Student object (getter / setter)
+      const student = {
+        name: "Johnathan",
+        surname: "Rob",
+        language: "English",
+        _age: "",
+        get lang() {
+          return this.language;
+        },
+        set setAge(val) {
+          this._age = Number(val);
+        },
+        get age() {
+          return this._age;
+        },
+      };
+
+      student.setAge = prompt("Gooi daai age:");
+      console.log("Language:", student.lang);
+      console.log("Age:", student.age);
+
+      // Person constructor
+      function Person(fName, sName, age, height) {
+        this.firstName = fName;
+        this.surname = sName;
+        this.age = age;
+        this.height = height;
+        this.toString = function () {
+          return Object.entries(this)
+            .filter(([, v]) => typeof v !== "function")
+            .map(([k, v]) => `${k}: ${v}`)
+            .join("\n");
+        };
+      }
+
+      const firstName = prompt("Wat is jou naam?");
+      const surname = prompt("Wat is jou van?");
+      const ouderdom = prompt("Hoe oud is jy?");
+      const hoogte = prompt("Hoe hoog is jy?");
+
+      const newPerson = new Person(firstName, surname, ouderdom, hoogte);
+      alert(newPerson.toString());
+      console.log(newPerson);
+
+      // Person3 object (dot notation + for...in)
+      const person3 = {
+        numOfLegs: 2,
+        height: "OesLank",
+        persoonlikheid: "Befok",
+        canHike: false,
+      };
+      person3.monsterDrinksPerDay = prompt("How many Monsters per day?");
+
+      console.log(person3);
+      for (const key in person3) console.log(`${key}: ${person3[key]}`);
+    </script>
+  </body>
+</html>
